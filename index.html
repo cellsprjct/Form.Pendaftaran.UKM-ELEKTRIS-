@@ -317,6 +317,12 @@
             transform: scale(0.98);
         }
 
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
         .footer-note {
             text-align: center;
             color: #4a4a7a;
@@ -507,8 +513,8 @@
             <!-- ===== PARAGRAF DESKRIPSI ===== -->
             <div class="description">
                 <p>
-                    <strong>UKM E-Lektris</strong> Unit Kegiatan Mahasiswa di bidang 
-                    <span class="highlight">Teknik Elektronika</span> yang bertujuan untuk 
+                    <strong>UKM E-Lektris</strong> adalah Unit Kegiatan Mahasiswa di bidang 
+                    <span class="highlight">Teknik Elektro dan Elektronika</span> yang bertujuan untuk 
                     mengembangkan potensi mahasiswa dalam bidang <strong>kelistrikan, robotika, 
                     dan inovasi teknologi</strong>. Bergabunglah dengan kami untuk mengasah 
                     keterampilan, memperluas jaringan, dan berkontribusi dalam proyek-proyek 
@@ -525,7 +531,6 @@
             <form id="registrationForm" 
                 action="https://docs.google.com/forms/d/e/1FAIpQLSdNKQbvvu5Bk0HsOHHPBXGb4ahdZ1rHhKMxffyIjoiV09O4Xw/formResponse" 
                 method="POST"
-                target="_blank"
                 onsubmit="handleSubmit(event)"
             >
 
@@ -790,7 +795,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-submit">
+                <button type="submit" class="btn-submit" id="submitBtn">
                     ⚡ Daftar Sekarang
                 </button>
             </form>
@@ -810,7 +815,7 @@
                 Kami akan segera menghubungi Anda melalui WhatsApp untuk informasi lebih lanjut.
             </p>
             <p class="sub-text">
-                📩 Cek WhatsApp Anda secara berkala untuk update terbaru.
+                📩 Cek email dan WhatsApp Anda secara berkala untuk update terbaru.
             </p>
             <button class="btn-back" onclick="resetForm()">
                 🔄 Kembali ke Formulir
@@ -822,6 +827,9 @@
     <div class="confetti-container" id="confettiContainer"></div>
 
     <script>
+        // ===== CEK APAKAH SUDAH SUBMIT =====
+        let isSubmitting = false;
+
         // ===== FUNGSI UNTUK RADIO "LAINNYA" =====
         document.querySelectorAll('.radio-other-trigger').forEach(function(radio) {
             radio.addEventListener('change', function() {
@@ -877,15 +885,26 @@
         function handleSubmit(event) {
             event.preventDefault();
             
-            // Validasi form
+            // Cegah double submit
+            if (isSubmitting) return;
+            
             const form = document.getElementById('registrationForm');
+            const submitBtn = document.getElementById('submitBtn');
+            
+            // Validasi form
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
             
-            // Kirim form ke Google Forms
+            // Disable tombol
+            isSubmitting = true;
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Mengirim...';
+            
+            // Kirim data ke Google Forms menggunakan fetch dengan mode no-cors
             const formData = new FormData(form);
+            
             fetch(form.action, {
                 method: 'POST',
                 body: formData,
@@ -900,22 +919,22 @@
                 
                 // Scroll ke atas
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Reset status submit
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitBtn.textContent = '⚡ Daftar Sekarang';
             }).catch(() => {
                 // Jika fetch gagal, tetap tampilkan terima kasih
                 document.getElementById('formPage').classList.add('hidden');
                 document.getElementById('thankyouPage').classList.add('active');
                 launchConfetti();
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitBtn.textContent = '⚡ Daftar Sekarang';
             });
-            
-            // Submit form ke target _blank (Google Forms)
-            form.target = '_blank';
-            form.submit();
-            
-            // Reset target agar tidak mengganggu jika ada submit ulang
-            setTimeout(() => {
-                form.target = '_blank';
-            }, 100);
         }
 
         // ===== FUNGSI RESET FORM =====
@@ -941,6 +960,12 @@
                     firstRadio.setAttribute('required', 'required');
                 }
             });
+            
+            // Reset tombol
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = false;
+            submitBtn.textContent = '⚡ Daftar Sekarang';
+            isSubmitting = false;
             
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -968,16 +993,6 @@
                 container.innerHTML = '';
             }, 5000);
         }
-
-        // ===== CEK APAKAH ADA PARAMETER THANKYOU =====
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('status') === 'success') {
-                document.getElementById('formPage').classList.add('hidden');
-                document.getElementById('thankyouPage').classList.add('active');
-                launchConfetti();
-            }
-        };
     </script>
 </body>
 </html>
