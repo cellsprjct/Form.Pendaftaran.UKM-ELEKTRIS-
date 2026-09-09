@@ -19,6 +19,7 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            transition: all 0.3s ease;
         }
 
         .container {
@@ -31,6 +32,7 @@
             box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
             position: relative;
             overflow: hidden;
+            transition: all 0.5s ease;
         }
 
         .container::before {
@@ -80,7 +82,7 @@
         /* ===== HEADER ===== */
         .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             padding-top: 5px;
         }
 
@@ -106,6 +108,28 @@
 
         .header .subtitle span {
             color: #00FF88;
+        }
+
+        /* ===== PARAGRAF DESKRIPSI ===== */
+        .description {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 4px solid #00D4FF;
+            padding: 15px 20px;
+            border-radius: 0 12px 12px 0;
+            margin-bottom: 25px;
+            color: #ccd6f6;
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .description strong {
+            color: #00D4FF;
+        }
+
+        .description .highlight {
+            color: #00FF88;
+            font-weight: 600;
         }
 
         /* ===== FORM ===== */
@@ -264,6 +288,24 @@
             transition: all 0.3s ease;
             letter-spacing: 1px;
             margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-submit::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+        }
+
+        .btn-submit:hover::after {
+            left: 100%;
         }
 
         .btn-submit:hover {
@@ -297,6 +339,120 @@
             margin-top: 5px;
         }
 
+        /* ===== HALAMAN TERIMA KASIH ===== */
+        .thankyou-page {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .thankyou-page.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .thankyou-page .icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s ease infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .thankyou-page h2 {
+            color: #00FF88;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .thankyou-page p {
+            color: #ccd6f6;
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto 10px;
+        }
+
+        .thankyou-page .sub-text {
+            color: #8892b0;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .thankyou-page .btn-back {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00D4FF, #0088ff);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            text-decoration: none;
+        }
+
+        .thankyou-page .btn-back:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .form-page {
+            display: block;
+        }
+
+        .form-page.hidden {
+            display: none;
+        }
+
+        /* ===== ANIMASI CONFETTI ===== */
+        .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confettiFall linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                opacity: 1;
+                transform: translateY(-100px) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+
         @media (max-width: 500px) {
             .container {
                 padding: 20px;
@@ -316,307 +472,357 @@
             .logo-left img, .logo-right img {
                 height: 45px;
             }
+            .thankyou-page h2 {
+                font-size: 24px;
+            }
+            .thankyou-page .icon {
+                font-size: 60px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="mainContainer">
         <!-- ===== BARIS LOGO ===== -->
         <div class="logo-row">
-            <!-- Logo kiri: POLITEKNIK DEWANTARA -->
             <div class="logo-left">
                 <img src="assets/img/POLITEKNIK DEWANTARA HD.png" alt="Logo Politeknik Dewantara" />
             </div>
-            <!-- Logo kanan: UKM ELEKTRIS -->
             <div class="logo-right">
                 <img src="assets/img/UKM ELEKTRIS.png" alt="Logo UKM E-Lektris" />
             </div>
         </div>
 
-        <!-- ===== HEADER ===== -->
-        <div class="header">
-            <div class="logo-icon">⚡</div>
-            <h1>Formulir Pendaftaran</h1>
-            <div class="subtitle">
-                UKM E-LEKTRIS
+        <!-- ===== FORM PAGE ===== -->
+        <div class="form-page" id="formPage">
+            <!-- ===== HEADER ===== -->
+            <div class="header">
+                <div class="logo-icon">⚡</div>
+                <h1>Formulir Pendaftaran</h1>
+                <div class="subtitle">
+                    UKM E-LEKTRIS
+                </div>
+            </div>
+
+            <!-- ===== PARAGRAF DESKRIPSI ===== -->
+            <div class="description">
+                <p>
+                    <strong>UKM E-Lektris</strong> Unit Kegiatan Mahasiswa di bidang 
+                    <span class="highlight">Teknik Elektronika</span> yang bertujuan untuk 
+                    mengembangkan potensi mahasiswa dalam bidang <strong>kelistrikan, robotika, 
+                    dan inovasi teknologi</strong>. Bergabunglah dengan kami untuk mengasah 
+                    keterampilan, memperluas jaringan, dan berkontribusi dalam proyek-proyek 
+                    nyata yang bermanfaat bagi masyarakat.
+                </p>
+                <p style="margin-top: 8px;">
+                    ✨ <strong>Keunggulan UKM E-Lektris:</strong> 
+                    Pelatihan rutin, workshop bersama praktisi, kompetisi tingkat nasional, 
+                    dan proyek pengabdian masyarakat.
+                </p>
+            </div>
+
+            <!-- ===== FORM ===== -->
+            <form id="registrationForm" 
+                action="https://docs.google.com/forms/d/e/1FAIpQLSdNKQbvvu5Bk0HsOHHPBXGb4ahdZ1rHhKMxffyIjoiV09O4Xw/formResponse" 
+                method="POST"
+                target="_blank"
+                onsubmit="handleSubmit(event)"
+            >
+
+                <div class="section-title">📋 Data Diri</div>
+
+                <div class="form-group">
+                    <label for="nama">
+                        Nama Lengkap <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="nama" 
+                        name="entry.1672546374" 
+                        placeholder="Masukkan nama lengkap Anda"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="nim">
+                        Nomor Induk Mahasiswa (NIM) <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="nim" 
+                        name="entry.655974064" 
+                        placeholder="Contoh: 2023010001"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="prodi">
+                        Program Studi <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="prodi" 
+                        name="entry.764927774" 
+                        placeholder="Contoh: Teknik Elektronika"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="semester">
+                        Semester <span class="required">*</span>
+                    </label>
+                    <select id="semester" name="entry.329764134" required>
+                        <option value="" disabled selected>Pilih Semester</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="__other_option__">Lainnya</option>
+                    </select>
+                    <div class="note-info">Pilih "Lainnya" jika semester tidak tersedia di atas</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="ttl">
+                        Tempat, Tanggal Lahir <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="ttl" 
+                        name="entry.582148540" 
+                        placeholder="Contoh: Jakarta, 01 Januari 2000"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Jenis Kelamin <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1890130688" value="Laki-Laki" required />
+                            Laki-Laki
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1890130688" value="Perempuan" required />
+                            Perempuan
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">
+                        Alamat Lengkap (sekarang) <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="alamat" 
+                        name="entry.285182503" 
+                        placeholder="Masukkan alamat lengkap Anda saat ini"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="hp">
+                        Nomor HP Aktif / WhatsApp <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="hp" 
+                        name="entry.1132701260" 
+                        placeholder="Contoh: 0812-3456-7890"
+                        required
+                    />
+                </div>
+
+                <div class="section-title">🆘 Kontak Darurat</div>
+
+                <div class="form-group">
+                    <label for="ortu">
+                        Nama Orang Tua/Wali <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="ortu" 
+                        name="entry.696286371" 
+                        placeholder="Masukkan nama orang tua atau wali"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Hubungan dengan Peserta <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1627583179" value="Orang Tua Kandung" required />
+                            Orang Tua Kandung
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1627583179" value="Orang Tua Wali" required />
+                            Orang Tua Wali
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1627583179" value="__other_option__" required class="radio-other-trigger" data-target="hubungan-other" />
+                            Lainnya
+                        </label>
+                    </div>
+                    <div class="radio-other-wrapper" id="hubungan-other" style="display: none;">
+                        <label>
+                            <input type="text" name="entry.1627583179_other" placeholder="Sebutkan hubungan lainnya" disabled />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="hp_ortu">
+                        Nomor HP Aktif / WhatsApp (Orang Tua/Wali) <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="hp_ortu" 
+                        name="entry.674144275" 
+                        placeholder="Contoh: 0812-3456-7890"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat_ortu">
+                        Alamat Orang Tua/Wali <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="alamat_ortu" 
+                        name="entry.1066271470" 
+                        placeholder="Masukkan alamat orang tua atau wali"
+                        required
+                    />
+                </div>
+
+                <div class="section-title">ℹ️ Informasi, Kondisi dan Kebutuhan</div>
+
+                <div class="form-group">
+                    <label>
+                        Apakah Pernah Mengikuti kegiatan Organisasi? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1217663590" value="Ya" required />
+                            Ya
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1217663590" value="Tidak" required />
+                            Tidak
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1217663590" value="__other_option__" required class="radio-other-trigger" data-target="organisasi-other" />
+                            Lainnya
+                        </label>
+                    </div>
+                    <div class="radio-other-wrapper" id="organisasi-other" style="display: none;">
+                        <label>
+                            <input type="text" name="entry.1217663590_other" placeholder="Sebutkan lainnya" disabled />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="organisasi">
+                        Organisasi/Kegiatan yang pernah diikuti
+                    </label>
+                    <textarea 
+                        id="organisasi" 
+                        name="entry.619195165" 
+                        placeholder="Tuliskan organisasi atau kegiatan yang pernah Anda ikuti (jika ada)"
+                    ></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Apakah memiliki Penyakit/Alergi tertentu? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.1257623057" value="Tidak" required />
+                            Tidak
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.1257623057" value="__other_option__" required class="radio-other-trigger" data-target="penyakit-other" />
+                            Lainnya (sebutkan)
+                        </label>
+                    </div>
+                    <div class="radio-other-wrapper" id="penyakit-other" style="display: none;">
+                        <label>
+                            <input type="text" name="entry.1257623057_other" placeholder="Sebutkan penyakit/alergi" disabled />
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        Apakah memiliki kebutuhan khusus? <span class="required">*</span>
+                    </label>
+                    <div class="radio-group">
+                        <label>
+                            <input type="radio" name="entry.2049459889" value="Tidak" required />
+                            Tidak
+                        </label>
+                        <label>
+                            <input type="radio" name="entry.2049459889" value="__other_option__" required class="radio-other-trigger" data-target="kebutuhan-other" />
+                            Lainnya (sebutkan)
+                        </label>
+                    </div>
+                    <div class="radio-other-wrapper" id="kebutuhan-other" style="display: none;">
+                        <label>
+                            <input type="text" name="entry.2049459889_other" placeholder="Sebutkan kebutuhan khusus" disabled />
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-submit">
+                    ⚡ Daftar Sekarang
+                </button>
+            </form>
+
+            <div class="footer-note">
+                Data Anda akan tersimpan aman di Google Sheets &bull; 
+                <a href="#" target="_blank">Kebijakan Privasi</a>
             </div>
         </div>
 
-        <!-- ===== FORM ===== -->
-        <form 
-            action="https://docs.google.com/forms/d/e/1FAIpQLSdNKQbvvu5Bk0HsOHHPBXGb4ahdZ1rHhKMxffyIjoiV09O4Xw/formResponse" 
-            method="POST"
-            target="_blank"
-        >
-
-            <div class="section-title">📋 Data Diri</div>
-
-            <div class="form-group">
-                <label for="nama">
-                    Nama Lengkap <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="nama" 
-                    name="entry.1672546374" 
-                    placeholder="Masukkan nama lengkap Anda"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label for="nim">
-                    Nomor Induk Mahasiswa (NIM) <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="nim" 
-                    name="entry.655974064" 
-                    placeholder="Contoh: 2023010001"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label for="prodi">
-                    Program Studi <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="prodi" 
-                    name="entry.764927774" 
-                    placeholder="Contoh: Teknik Elektronika"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label for="semester">
-                    Semester <span class="required">*</span>
-                </label>
-                <select id="semester" name="entry.329764134" required>
-                    <option value="" disabled selected>Pilih Semester</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="__other_option__">Lainnya</option>
-                </select>
-                <div class="note-info">Pilih "Lainnya" jika semester tidak tersedia di atas</div>
-            </div>
-
-            <div class="form-group">
-                <label for="ttl">
-                    Tempat, Tanggal Lahir <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="ttl" 
-                    name="entry.582148540" 
-                    placeholder="Contoh: Jakarta, 01 Januari 2000"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Jenis Kelamin <span class="required">*</span>
-                </label>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="entry.1890130688" value="Laki-Laki" required />
-                        Laki-Laki
-                    </label>
-                    <label>
-                        <input type="radio" name="entry.1890130688" value="Perempuan" required />
-                        Perempuan
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="alamat">
-                    Alamat Lengkap (sekarang) <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="alamat" 
-                    name="entry.285182503" 
-                    placeholder="Masukkan alamat lengkap Anda saat ini"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label for="hp">
-                    Nomor HP Aktif / WhatsApp
-                </label>
-                <input 
-                    type="text" 
-                    id="hp" 
-                    name="entry.1132701260" 
-                    placeholder="Contoh: 0812-3456-7890"
-                />
-            </div>
-
-            <div class="section-title">🆘 Kontak Darurat</div>
-
-            <div class="form-group">
-                <label for="ortu">
-                    Nama Orang Tua/Wali <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="ortu" 
-                    name="entry.696286371" 
-                    placeholder="Masukkan nama orang tua atau wali"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Hubungan dengan Peserta <span class="required">*</span>
-                </label>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="entry.1627583179" value="Orang Tua Kandung" required />
-                        Orang Tua Kandung
-                    </label>
-                    <label>
-                        <input type="radio" name="entry.1627583179" value="Orang Tua Wali" required />
-                        Orang Tua Wali
-                    </label>
-                    <label>
-                        <input type="radio" name="entry.1627583179" value="__other_option__" required class="radio-other-trigger" data-target="hubungan-other" />
-                        Lainnya
-                    </label>
-                </div>
-                <div class="radio-other-wrapper" id="hubungan-other" style="display: none;">
-                    <label>
-                        <input type="text" name="entry.1627583179_other" placeholder="Sebutkan hubungan lainnya" disabled />
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="hp_ortu">
-                    Nomor HP Aktif / WhatsApp (Orang Tua/Wali) <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="hp_ortu" 
-                    name="entry.674144275" 
-                    placeholder="Contoh: 0812-3456-7890"
-                    required
-                />
-            </div>
-
-            <div class="form-group">
-                <label for="alamat_ortu">
-                    Alamat Orang Tua/Wali <span class="required">*</span>
-                </label>
-                <input 
-                    type="text" 
-                    id="alamat_ortu" 
-                    name="entry.1066271470" 
-                    placeholder="Masukkan alamat orang tua atau wali"
-                    required
-                />
-            </div>
-
-            <div class="section-title">ℹ️ Informasi, Kondisi dan Kebutuhan</div>
-
-            <div class="form-group">
-                <label>
-                    Apakah Pernah Mengikuti kegiatan Organisasi? <span class="required">*</span>
-                </label>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="entry.1217663590" value="Ya" required />
-                        Ya
-                    </label>
-                    <label>
-                        <input type="radio" name="entry.1217663590" value="Tidak" required />
-                        Tidak
-                    </label>
-                    <label>
-                        <input type="radio" name="entry.1217663590" value="__other_option__" required class="radio-other-trigger" data-target="organisasi-other" />
-                        Lainnya
-                    </label>
-                </div>
-                <div class="radio-other-wrapper" id="organisasi-other" style="display: none;">
-                    <label>
-                        <input type="text" name="entry.1217663590_other" placeholder="Sebutkan lainnya" disabled />
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="organisasi">
-                    Organisasi/Kegiatan yang pernah diikuti
-                </label>
-                <textarea 
-                    id="organisasi" 
-                    name="entry.619195165" 
-                    placeholder="Tuliskan organisasi atau kegiatan yang pernah Anda ikuti (jika ada)"
-                ></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Apakah memiliki Penyakit/Alergi tertentu? <span class="required">*</span>
-                </label>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="entry.1257623057" value="Tidak" required />
-                        Tidak
-                    </label>
-                    <label>
-                        <input type="radio" name="entry.1257623057" value="__other_option__" required class="radio-other-trigger" data-target="penyakit-other" />
-                        Lainnya (sebutkan)
-                    </label>
-                </div>
-                <div class="radio-other-wrapper" id="penyakit-other" style="display: none;">
-                    <label>
-                        <input type="text" name="entry.1257623057_other" placeholder="Sebutkan penyakit/alergi" disabled />
-                    </label>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label>
-                    Apakah memiliki kebutuhan khusus? <span class="required">*</span>
-                </label>
-                <div class="radio-group">
-                    <label>
-                        <input type="radio" name="entry.2049459889" value="Tidak" required />
-                        Tidak
-                    </label>
-                    <label>
-                        <input type="radio" name="entry.2049459889" value="__other_option__" required class="radio-other-trigger" data-target="kebutuhan-other" />
-                        Lainnya (sebutkan)
-                    </label>
-                </div>
-                <div class="radio-other-wrapper" id="kebutuhan-other" style="display: none;">
-                    <label>
-                        <input type="text" name="entry.2049459889_other" placeholder="Sebutkan kebutuhan khusus" disabled />
-                    </label>
-                </div>
-            </div>
-
-            <button type="submit" class="btn-submit">
-                ⚡ Daftar Sekarang
+        <!-- ===== HALAMAN TERIMA KASIH ===== -->
+        <div class="thankyou-page" id="thankyouPage">
+            <div class="icon">🎉</div>
+            <h2>Pendaftaran Berhasil!</h2>
+            <p>
+                Terima kasih telah mendaftar di <strong style="color: #00D4FF;">UKM E-Lektris</strong>.
+                Kami akan segera menghubungi Anda melalui WhatsApp untuk informasi lebih lanjut.
+            </p>
+            <p class="sub-text">
+                📩 Cek WhatsApp Anda secara berkala untuk update terbaru.
+            </p>
+            <button class="btn-back" onclick="resetForm()">
+                🔄 Kembali ke Formulir
             </button>
-        </form>
-
-        <div class="footer-note">
-            Data Anda akan tersimpan aman di Google Sheets &bull; 
-            <a href="#" target="_blank">Kebijakan Privasi</a>
         </div>
     </div>
 
+    <!-- ===== CONFETTI CONTAINER ===== -->
+    <div class="confetti-container" id="confettiContainer"></div>
+
     <script>
-        // Fungsi untuk menangani radio "Lainnya" dengan kolom input tambahan
+        // ===== FUNGSI UNTUK RADIO "LAINNYA" =====
         document.querySelectorAll('.radio-other-trigger').forEach(function(radio) {
             radio.addEventListener('change', function() {
                 var targetId = this.getAttribute('data-target');
@@ -666,6 +872,112 @@
                 });
             });
         });
+
+        // ===== FUNGSI SUBMIT FORM =====
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Validasi form
+            const form = document.getElementById('registrationForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            
+            // Kirim form ke Google Forms
+            const formData = new FormData(form);
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(() => {
+                // Tampilkan halaman terima kasih
+                document.getElementById('formPage').classList.add('hidden');
+                document.getElementById('thankyouPage').classList.add('active');
+                
+                // Jalankan confetti
+                launchConfetti();
+                
+                // Scroll ke atas
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }).catch(() => {
+                // Jika fetch gagal, tetap tampilkan terima kasih
+                document.getElementById('formPage').classList.add('hidden');
+                document.getElementById('thankyouPage').classList.add('active');
+                launchConfetti();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Submit form ke target _blank (Google Forms)
+            form.target = '_blank';
+            form.submit();
+            
+            // Reset target agar tidak mengganggu jika ada submit ulang
+            setTimeout(() => {
+                form.target = '_blank';
+            }, 100);
+        }
+
+        // ===== FUNGSI RESET FORM =====
+        function resetForm() {
+            document.getElementById('formPage').classList.remove('hidden');
+            document.getElementById('thankyouPage').classList.remove('active');
+            document.getElementById('registrationForm').reset();
+            
+            // Reset semua input "lainnya"
+            document.querySelectorAll('.radio-other-wrapper').forEach(function(wrapper) {
+                wrapper.style.display = 'none';
+                var input = wrapper.querySelector('input[type="text"]');
+                if (input) {
+                    input.disabled = true;
+                    input.value = '';
+                }
+            });
+            
+            // Kembalikan required ke radio group
+            document.querySelectorAll('.radio-group').forEach(function(group) {
+                var firstRadio = group.querySelector('input[type="radio"]');
+                if (firstRadio) {
+                    firstRadio.setAttribute('required', 'required');
+                }
+            });
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ===== FUNGSI CONFETTI =====
+        function launchConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#00D4FF', '#00FF88', '#FF6B6B', '#FFD93D', '#6C5CE7', '#FD79A8', '#00B894'];
+            
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.width = (Math.random() * 8 + 4) + 'px';
+                confetti.style.height = (Math.random() * 8 + 4) + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+                confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                confetti.style.animationDelay = (Math.random() * 1.5) + 's';
+                container.appendChild(confetti);
+            }
+            
+            // Hapus confetti setelah animasi selesai
+            setTimeout(() => {
+                container.innerHTML = '';
+            }, 5000);
+        }
+
+        // ===== CEK APAKAH ADA PARAMETER THANKYOU =====
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('status') === 'success') {
+                document.getElementById('formPage').classList.add('hidden');
+                document.getElementById('thankyouPage').classList.add('active');
+                launchConfetti();
+            }
+        };
     </script>
 </body>
 </html>
