@@ -359,16 +359,16 @@
         }
 
         /* ============================================================
-           DESAIN NAME TAG PROFESIONAL - BIRU NAVY + EMAS
+           DESAIN NAME TAG - BIRU NAVY + EMAS (RAPI)
            ============================================================ */
         .name-tag {
-            width: 400px;
+            width: 380px;
             background: #0a0e1a;
-            border-radius: 16px;
+            border-radius: 14px;
             padding: 0;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(0, 212, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
             overflow: hidden;
-            border: 1px solid rgba(0, 212, 255, 0.2);
+            border: 1px solid rgba(201, 168, 76, 0.3);
             position: relative;
         }
 
@@ -381,24 +381,17 @@
             right: 0;
             height: 4px;
             background: linear-gradient(90deg, #C9A84C, #F4E08A, #C9A84C);
-            background-size: 200% 100%;
-            animation: goldShine 3s linear infinite;
             z-index: 10;
-        }
-
-        @keyframes goldShine {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
         }
 
         /* ===== HEADER ===== */
         .name-tag-header {
             background: linear-gradient(180deg, #0d1230, #151d4a);
-            padding: 16px 20px 14px;
+            padding: 14px 20px 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.08);
+            border-bottom: 1px solid rgba(201, 168, 76, 0.1);
         }
 
         .name-tag-header .header-left {
@@ -408,7 +401,7 @@
 
         .name-tag-header .header-left .org-name {
             color: #C9A84C;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -422,21 +415,15 @@
             margin-top: 1px;
         }
 
-        .name-tag-header .header-right {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
         .name-tag-header .header-right .logo-ukm {
-            height: 38px;
+            height: 36px;
             width: auto;
-            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.2));
+            filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.15));
         }
 
         /* ===== BADGE ===== */
         .name-tag-badge {
-            padding: 18px 24px 12px;
+            padding: 16px 24px 10px;
             text-align: center;
             background: linear-gradient(180deg, #0d1230, #0a0e1a);
         }
@@ -448,10 +435,10 @@
 
         .name-tag-badge .photo-wrapper .ring {
             position: absolute;
-            top: -4px;
-            left: -4px;
-            width: 88px;
-            height: 88px;
+            top: -3px;
+            left: -3px;
+            width: 82px;
+            height: 82px;
             border-radius: 50%;
             background: linear-gradient(135deg, #C9A84C, #F4E08A, #C9A84C);
             padding: 2px;
@@ -468,70 +455,74 @@
         }
 
         .name-tag-badge .photo-placeholder {
-            width: 80px;
-            height: 80px;
+            width: 74px;
+            height: 74px;
             border-radius: 50%;
             background: linear-gradient(135deg, #1a2a5a, #0d1230);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 42px;
+            font-size: 38px;
             color: #C9A84C;
-            border: 2px solid rgba(201, 168, 76, 0.3);
+            border: 2px solid rgba(201, 168, 76, 0.25);
         }
 
         .name-tag-badge .name {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 700;
             color: #ffffff;
-            letter-spacing: 1px;
-            margin-top: 12px;
-            text-shadow: 0 2px 10px rgba(0, 212, 255, 0.1);
+            letter-spacing: 0.5px;
+            margin-top: 10px;
         }
 
         .name-tag-badge .nim {
-            font-size: 13px;
+            font-size: 12px;
             color: #6a7a9a;
             font-weight: 500;
             margin-top: 2px;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
         }
 
         .name-tag-badge .divider {
-            width: 60px;
+            width: 50px;
             height: 2px;
             background: linear-gradient(90deg, transparent, #C9A84C, transparent);
-            margin: 10px auto 0;
+            margin: 8px auto 0;
             border-radius: 2px;
         }
 
         /* ===== DETAILS ===== */
         .name-tag-details {
-            padding: 10px 24px 16px;
+            padding: 10px 28px 14px;
             background: #0d1230;
-            border-top: 1px solid rgba(201, 168, 76, 0.1);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4px 24px;
+            border-top: 1px solid rgba(201, 168, 76, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
         }
 
         .name-tag-details .item {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.04);
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .name-tag-details .item:last-child {
+            border-bottom: none;
         }
 
         .name-tag-details .item .label {
             font-size: 10px;
             color: #4a5a7a;
-            font-weight: 500;
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.8px;
         }
 
         .name-tag-details .item .value {
-            font-size: 12px;
+            font-size: 13px;
             color: #e0e8f5;
             font-weight: 600;
             text-align: right;
@@ -556,6 +547,7 @@
 
         .name-tag-footer .footer-left .footer-icon {
             font-size: 14px;
+            color: #C9A84C;
         }
 
         .name-tag-footer .footer-left .footer-text {
@@ -577,27 +569,8 @@
             color: #C9A84C;
         }
 
-        /* ===== SEAL ===== */
-        .name-tag .seal {
-            position: absolute;
-            bottom: 60px;
-            right: 16px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid rgba(201, 168, 76, 0.2);
-            background: rgba(201, 168, 76, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            color: #C9A84C;
-            opacity: 0.6;
-            transform: rotate(-15deg);
-        }
-
         /* ============================================================
-           TOMBOL AKSI
+           TOMBOL AKSI - HANYA DOWNLOAD PDF
            ============================================================ */
         .id-card-actions {
             display: flex;
@@ -608,12 +581,33 @@
             width: 100%;
         }
 
-        .btn-print,
-        .btn-back,
-        .btn-card {
-            padding: 10px 25px;
+        .btn-download-pdf {
+            padding: 12px 35px;
+            background: linear-gradient(135deg, #C9A84C, #B8942E);
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
+            color: #0a0a1a;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(201, 168, 76, 0.3);
+        }
+
+        .btn-download-pdf:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 30px rgba(201, 168, 76, 0.5);
+        }
+
+        .btn-back {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #6C5CE7, #4834d4);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
@@ -621,31 +615,6 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-        }
-
-        .btn-print {
-            background: linear-gradient(135deg, #C9A84C, #B8942E);
-            color: #0a0a1a;
-        }
-
-        .btn-print:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
-        }
-
-        .btn-card {
-            background: linear-gradient(135deg, #00D4FF, #0088ff);
-            color: #fff;
-        }
-
-        .btn-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
-        }
-
-        .btn-back {
-            background: linear-gradient(135deg, #6C5CE7, #4834d4);
-            color: #fff;
         }
 
         .btn-back:hover {
@@ -653,13 +622,13 @@
             box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
         }
 
-        .btn-print-pdf {
-            padding: 10px 25px;
-            background: linear-gradient(135deg, #FF6B6B, #ee5a24);
+        .btn-card {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #00D4FF, #0088ff);
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             color: #fff;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -668,9 +637,9 @@
             gap: 8px;
         }
 
-        .btn-print-pdf:hover {
+        .btn-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
         /* ===== THANK YOU PAGE ===== */
@@ -779,32 +748,30 @@
                 height: 45px;
             }
             .name-tag {
-                width: 340px;
-            }
-            .name-tag-details {
-                grid-template-columns: 1fr;
-                gap: 2px;
+                width: 320px;
             }
             .name-tag-badge .photo-placeholder {
-                width: 65px;
-                height: 65px;
+                width: 60px;
+                height: 60px;
                 font-size: 30px;
             }
             .name-tag-badge .photo-wrapper .ring {
-                width: 73px;
-                height: 73px;
+                width: 68px;
+                height: 68px;
             }
             .name-tag-badge .name {
-                font-size: 18px;
+                font-size: 17px;
+            }
+            .name-tag-details .item .value {
+                font-size: 12px;
             }
             .id-card-actions {
                 flex-direction: column;
                 align-items: center;
             }
-            .btn-print,
+            .btn-download-pdf,
             .btn-back,
-            .btn-card,
-            .btn-print-pdf {
+            .btn-card {
                 width: 100%;
                 justify-content: center;
             }
@@ -846,15 +813,9 @@
                 animation: none !important;
             }
 
-            /* Reset semua animasi agar tidak berkedip saat print */
-            .id-card-preview .name-tag::before {
-                animation: none !important;
-                background: #C9A84C !important;
-            }
-
             .name-tag {
-                width: 380px !important;
-                max-width: 95% !important;
+                width: 350px !important;
+                max-width: 90% !important;
                 box-shadow: none !important;
                 border: 2px solid #C9A84C !important;
                 border-radius: 12px !important;
@@ -863,9 +824,9 @@
                 margin: 0 auto;
             }
 
-            .name-tag .seal {
-                display: flex !important;
-                opacity: 0.4 !important;
+            .name-tag::before {
+                background: #C9A84C !important;
+                animation: none !important;
             }
 
             /* Sembunyikan tombol aksi saat print */
@@ -879,49 +840,38 @@
             .name-tag-header .header-left .org-name {
                 color: #C9A84C !important;
             }
-
             .name-tag-header .header-left .org-sub {
                 color: #6a7a9a !important;
             }
-
             .name-tag-badge .name {
                 color: #ffffff !important;
             }
-
             .name-tag-badge .nim {
                 color: #6a7a9a !important;
             }
-
             .name-tag-details .item .label {
                 color: #4a5a7a !important;
             }
-
             .name-tag-details .item .value {
                 color: #e0e8f5 !important;
             }
-
             .name-tag-footer .footer-left .footer-text {
                 color: #3a4a6a !important;
             }
-
             .name-tag-footer .footer-right {
                 color: #3a4a6a !important;
             }
-
             .name-tag-footer .footer-right .date {
                 color: #C9A84C !important;
             }
-
             .name-tag-badge .photo-placeholder {
                 background: linear-gradient(135deg, #1a2a5a, #0d1230) !important;
                 border: 2px solid rgba(201, 168, 76, 0.3) !important;
                 color: #C9A84C !important;
             }
-
             .name-tag-badge .divider {
                 background: linear-gradient(90deg, transparent, #C9A84C, transparent) !important;
             }
-
             .name-tag-header .header-right .logo-ukm {
                 filter: none !important;
             }
@@ -1205,9 +1155,8 @@
         <div class="id-card-preview" id="idCardPreview">
             <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
 
-                <!-- ===== NAME TAG PROFESIONAL ===== -->
+                <!-- ===== NAME TAG ===== -->
                 <div class="name-tag" id="nameTag">
-                    <!-- Garis emas atas (via ::before) -->
 
                     <!-- Header -->
                     <div class="name-tag-header">
@@ -1216,7 +1165,7 @@
                             <div class="org-sub">Politeknik Dewantara</div>
                         </div>
                         <div class="header-right">
-                            <img src="assets/img/UKM ELEKTRIS.png" alt="Logo UKM" class="logo-ukm" id="logoUkm" />
+                            <img src="assets/img/UKM ELEKTRIS.png" alt="Logo UKM" class="logo-ukm" />
                         </div>
                     </div>
 
@@ -1241,12 +1190,12 @@
                             <span class="value" id="cardProdi">-</span>
                         </div>
                         <div class="item">
-                            <span class="label">Jenis Kelamin</span>
-                            <span class="value" id="cardJK">-</span>
-                        </div>
-                        <div class="item">
                             <span class="label">No. HP</span>
                             <span class="value" id="cardHP">-</span>
+                        </div>
+                        <div class="item">
+                            <span class="label">Jenis Kelamin</span>
+                            <span class="value" id="cardJK">-</span>
                         </div>
                         <div class="item">
                             <span class="label">Semester</span>
@@ -1265,14 +1214,13 @@
                         </div>
                     </div>
 
-                    <!-- Seal / Stempel -->
-                    <div class="seal">✓</div>
                 </div>
 
-                <!-- Tombol Aksi -->
+                <!-- Tombol Aksi - HANYA DOWNLOAD PDF -->
                 <div class="id-card-actions">
-                    <button class="btn-print" onclick="printCard()">🖨️ Cetak Kartu</button>
-                    <button class="btn-print-pdf" onclick="downloadPDF()">📥 Download PDF</button>
+                    <button class="btn-download-pdf" onclick="downloadPDF()">
+                        📥 Download PDF
+                    </button>
                     <button class="btn-back" onclick="backToForm()">⬅️ Kembali</button>
                 </div>
             </div>
@@ -1467,14 +1415,9 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // ===== FUNGSI CETAK KARTU =====
-        function printCard() {
-            window.print();
-        }
-
         // ===== FUNGSI DOWNLOAD PDF =====
         function downloadPDF() {
-            // Langsung buka print dialog dengan opsi save as PDF
+            // Buka print dialog dengan opsi save as PDF
             window.print();
         }
 
