@@ -358,7 +358,9 @@
             }
         }
 
-        /* ===== DESAIN NAME TAG PROFESIONAL - BIRU NAVY ===== */
+        /* ============================================================
+           DESAIN NAME TAG PROFESIONAL - BIRU NAVY + EMAS
+           ============================================================ */
         .name-tag {
             width: 400px;
             background: #0a0e1a;
@@ -430,10 +432,6 @@
             height: 38px;
             width: auto;
             filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.2));
-        }
-
-        .name-tag-header .header-right .badge-icon {
-            font-size: 24px;
         }
 
         /* ===== BADGE ===== */
@@ -579,7 +577,7 @@
             color: #C9A84C;
         }
 
-        /* ===== STICKER / SEAL ===== */
+        /* ===== SEAL ===== */
         .name-tag .seal {
             position: absolute;
             bottom: 60px;
@@ -598,7 +596,9 @@
             transform: rotate(-15deg);
         }
 
-        /* ===== TOMBOL ===== */
+        /* ============================================================
+           TOMBOL AKSI
+           ============================================================ */
         .id-card-actions {
             display: flex;
             gap: 12px;
@@ -755,6 +755,9 @@
             }
         }
 
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
         @media (max-width: 500px) {
             .container {
                 padding: 20px;
@@ -813,35 +816,114 @@
             }
         }
 
+        /* ============================================================
+           PRINT STYLES - OPTIMAL UNTUK CETAK KERTAS
+           ============================================================ */
         @media print {
+            /* Sembunyikan semua elemen selain ID Card */
             body * {
                 visibility: hidden;
             }
+
+            /* Tampilkan hanya ID Card */
             .id-card-preview,
             .id-card-preview * {
                 visibility: visible;
             }
+
             .id-card-preview {
-                position: absolute;
-                left: 50%;
-                top: 50%;
-                transform: translate(-50%, -50%);
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
                 display: flex !important;
+                justify-content: center;
+                align-items: center;
                 padding: 0;
-                background: transparent;
+                margin: 0;
+                background: #ffffff;
+                animation: none !important;
             }
-            .id-card-actions {
-                display: none !important;
+
+            /* Reset semua animasi agar tidak berkedip saat print */
+            .id-card-preview .name-tag::before {
+                animation: none !important;
+                background: #C9A84C !important;
             }
+
             .name-tag {
+                width: 380px !important;
+                max-width: 95% !important;
                 box-shadow: none !important;
-                border: 1px solid #333 !important;
+                border: 2px solid #C9A84C !important;
+                border-radius: 12px !important;
+                background: #0a0e1a !important;
+                page-break-inside: avoid;
+                margin: 0 auto;
             }
-            .name-tag::before {
-                display: none !important;
-            }
+
             .name-tag .seal {
+                display: flex !important;
+                opacity: 0.4 !important;
+            }
+
+            /* Sembunyikan tombol aksi saat print */
+            .id-card-actions,
+            .id-card-actions * {
                 display: none !important;
+                visibility: hidden !important;
+            }
+
+            /* Pastikan teks terbaca */
+            .name-tag-header .header-left .org-name {
+                color: #C9A84C !important;
+            }
+
+            .name-tag-header .header-left .org-sub {
+                color: #6a7a9a !important;
+            }
+
+            .name-tag-badge .name {
+                color: #ffffff !important;
+            }
+
+            .name-tag-badge .nim {
+                color: #6a7a9a !important;
+            }
+
+            .name-tag-details .item .label {
+                color: #4a5a7a !important;
+            }
+
+            .name-tag-details .item .value {
+                color: #e0e8f5 !important;
+            }
+
+            .name-tag-footer .footer-left .footer-text {
+                color: #3a4a6a !important;
+            }
+
+            .name-tag-footer .footer-right {
+                color: #3a4a6a !important;
+            }
+
+            .name-tag-footer .footer-right .date {
+                color: #C9A84C !important;
+            }
+
+            .name-tag-badge .photo-placeholder {
+                background: linear-gradient(135deg, #1a2a5a, #0d1230) !important;
+                border: 2px solid rgba(201, 168, 76, 0.3) !important;
+                color: #C9A84C !important;
+            }
+
+            .name-tag-badge .divider {
+                background: linear-gradient(90deg, transparent, #C9A84C, transparent) !important;
+            }
+
+            .name-tag-header .header-right .logo-ukm {
+                filter: none !important;
             }
         }
     </style>
@@ -1392,7 +1474,7 @@
 
         // ===== FUNGSI DOWNLOAD PDF =====
         function downloadPDF() {
-            alert('📥 Untuk download PDF:\n1. Klik "Cetak Kartu"\n2. Pada dialog print, pilih "Save as PDF"\n3. Atur layout ke "Portrait"\n4. Klik Save');
+            // Langsung buka print dialog dengan opsi save as PDF
             window.print();
         }
 
