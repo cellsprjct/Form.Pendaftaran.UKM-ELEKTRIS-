@@ -63,47 +63,18 @@
         .logo-left, .logo-right {
             display: flex;
             align-items: center;
-            gap: 10px;
         }
 
         .logo-left img, .logo-right img {
-            height: 65px;
+            height: 70px;
             width: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.3));
-            transition: transform 0.2s ease;
+            filter: drop-shadow(0 0 8px rgba(0, 212, 255, 0.3));
+            transition: transform 0.3s ease;
         }
 
         .logo-left img:hover, .logo-right img:hover {
             transform: scale(1.05);
-        }
-
-        /* Teks kecil di samping logo */
-        .logo-label {
-            color: #ffffff;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            border-left: 1px solid rgba(0, 212, 255, 0.25);
-            padding-left: 10px;
-        }
-
-        .logo-label span {
-            color: #ffffff;
-        }
-
-        .logo-label-right {
-            color: #ffffff;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            border-right: 1px solid rgba(0, 212, 255, 0.25);
-            padding-right: 10px;
-            text-align: right;
-        }
-
-        .logo-label-right span {
-            color: #ffffff;
         }
 
         /* ===== HEADER ===== */
@@ -343,12 +314,7 @@
                 min-width: 120px;
             }
             .logo-left img, .logo-right img {
-                height: 40px;
-            }
-            .logo-label, .logo-label-right {
-                font-size: 10px;
-                padding-left: 6px;
-                padding-right: 6px;
+                height: 45px;
             }
         }
     </style>
@@ -356,16 +322,14 @@
 <body>
     <div class="container">
         <!-- ===== BARIS LOGO ===== -->
-        <div class="logo-right">
-            <!-- Logo kiri: UKM ELEKTRIS -->
+        <div class="logo-row">
+            <!-- Logo kiri: POLITEKNIK DEWANTARA -->
             <div class="logo-left">
-                <img src="assets/img/UKM ELEKTRIS.png" alt="Logo UKM E-Lektris" />
-        
-            </div>
-            <!-- Logo kanan: POLITEKNIK DEWANTARA -->
-            <div class="logo-row">
-                <span class="logo-label-row">
                 <img src="assets/img/POLITEKNIK DEWANTARA HD.png" alt="Logo Politeknik Dewantara" />
+            </div>
+            <!-- Logo kanan: UKM ELEKTRIS -->
+            <div class="logo-right">
+                <img src="assets/img/UKM ELEKTRIS.png" alt="Logo UKM E-Lektris" />
             </div>
         </div>
 
