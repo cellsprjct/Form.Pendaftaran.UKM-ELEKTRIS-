@@ -50,12 +50,12 @@
             100% { background-position: 200% 0%; }
         }
 
-        /* --- Baris logo kembar: kiri UKM, kanan Politeknik --- */
+        /* ===== BARIS LOGO ===== */
         .logo-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
             gap: 10px;
         }
@@ -67,7 +67,7 @@
         }
 
         .logo-left img, .logo-right img {
-            height: 60px;
+            height: 65px;
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 0 6px rgba(0, 212, 255, 0.3));
@@ -75,10 +75,10 @@
         }
 
         .logo-left img:hover, .logo-right img:hover {
-            transform: scale(1.03);
+            transform: scale(1.05);
         }
 
-        /* Teks kecil di samping logo (opsional) */
+        /* Teks kecil di samping logo */
         .logo-label {
             color: #8892b0;
             font-size: 13px;
@@ -92,14 +92,29 @@
             color: #00D4FF;
         }
 
-        /* header tetap */
+        .logo-label-right {
+            color: #8892b0;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            border-right: 1px solid rgba(0, 212, 255, 0.25);
+            padding-right: 10px;
+            text-align: right;
+        }
+
+        .logo-label-right span {
+            color: #00D4FF;
+        }
+
+        /* ===== HEADER ===== */
         .header {
             text-align: center;
             margin-bottom: 30px;
+            padding-top: 5px;
         }
 
         .header .logo-icon {
-            font-size: 48px;
+            font-size: 42px;
             margin-bottom: 5px;
         }
 
@@ -112,7 +127,7 @@
 
         .header .subtitle {
             color: #ffffff;
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 600;
             margin-top: 5px;
             letter-spacing: 1px;
@@ -122,6 +137,7 @@
             color: #00FF88;
         }
 
+        /* ===== FORM ===== */
         .section-title {
             color: #00D4FF;
             font-size: 18px;
@@ -327,33 +343,33 @@
                 min-width: 120px;
             }
             .logo-left img, .logo-right img {
-                height: 42px;
+                height: 40px;
             }
-            .logo-label {
-                font-size: 11px;
+            .logo-label, .logo-label-right {
+                font-size: 10px;
                 padding-left: 6px;
+                padding-right: 6px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- BARIS LOGO: KIRI (UKM ELEKTRIS) & KANAN (POLITEKNIK DEWANTARA) -->
+        <!-- ===== BARIS LOGO ===== -->
         <div class="logo-row">
             <!-- Logo kiri: UKM ELEKTRIS -->
             <div class="logo-left">
-                <!-- Gunakan gambar dari file UKM ELEKTRIS.png (asumsikan berada di folder yang sama) -->
-                <img src="UKM ELEKTRIS.png" alt="Logo UKM E-Lektris" />
+                <img src="assets/img/UKM ELEKTRIS.png" alt="Logo UKM E-Lektris" />
                 <span class="logo-label">UKM <span>E-Lektris</span></span>
             </div>
             <!-- Logo kanan: POLITEKNIK DEWANTARA -->
             <div class="logo-right">
-                <span class="logo-label" style="border-left: none; border-right: 1px solid rgba(0,212,255,0.25); padding-right: 10px; padding-left: 0;">Politeknik <span>Dewantara</span></span>
-                <img src="POLITEKNIK DEWANTARA HD.png" alt="Logo Politeknik Dewantara" />
+                <span class="logo-label-right"><span>Politeknik</span> Dewantara</span>
+                <img src="assets/img/POLITEKNIK DEWANTARA HD.png" alt="Logo Politeknik Dewantara" />
             </div>
         </div>
 
-        <!-- HEADER (Judul) -->
+        <!-- ===== HEADER ===== -->
         <div class="header">
             <div class="logo-icon">⚡</div>
             <h1>Formulir Pendaftaran</h1>
@@ -362,6 +378,7 @@
             </div>
         </div>
 
+        <!-- ===== FORM ===== -->
         <form 
             action="https://docs.google.com/forms/d/e/1FAIpQLSdNKQbvvu5Bk0HsOHHPBXGb4ahdZ1rHhKMxffyIjoiV09O4Xw/formResponse" 
             method="POST"
@@ -647,7 +664,6 @@
                     input.disabled = false;
                     input.focus();
                     
-                    // Hapus required dari radio group asli agar tidak konflik
                     var radioGroup = this.closest('.radio-group');
                     if (radioGroup) {
                         radioGroup.querySelectorAll('input[type="radio"]').forEach(function(r) {
@@ -655,7 +671,6 @@
                                 r.removeAttribute('required');
                             }
                         });
-                        // Tetap required untuk radio "Lainnya"
                         radio.setAttribute('required', 'required');
                     }
                 } else {
@@ -666,11 +681,9 @@
             });
         });
 
-        // Menangani jika radio lain dipilih (bukan "Lainnya")
         document.querySelectorAll('.radio-group').forEach(function(group) {
             group.querySelectorAll('input[type="radio"]').forEach(function(radio) {
                 radio.addEventListener('change', function() {
-                    // Jika radio yang dipilih bukan "Lainnya", sembunyikan input lainnya
                     if (!this.classList.contains('radio-other-trigger')) {
                         var otherRadio = group.querySelector('.radio-other-trigger');
                         if (otherRadio) {
