@@ -359,7 +359,7 @@
         }
 
         /* ============================================================
-           DESAIN NAME TAG - BIRU NAVY + EMAS (RAPI)
+           DESAIN NAME TAG - BIRU NAVY + EMAS
            ============================================================ */
         .name-tag {
             width: 380px;
@@ -421,7 +421,7 @@
             filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.15));
         }
 
-        /* ===== BADGE - FOTO TIDAK TUMPUK ===== */
+        /* ===== BADGE ===== */
         .name-tag-badge {
             padding: 18px 24px 12px;
             text-align: center;
@@ -495,7 +495,7 @@
             border-radius: 2px;
         }
 
-        /* ===== DETAILS - RAPI DENGAN SPACING KONSISTEN ===== */
+        /* ===== DETAILS ===== */
         .name-tag-details {
             padding: 10px 28px 14px;
             background: #0d1230;
@@ -787,7 +787,7 @@
         }
 
         /* ============================================================
-           PRINT STYLES - SAMA DENGAN TAMPILAN
+           PRINT STYLES - SAMA PERSIS DENGAN TAMPILAN
            ============================================================ */
         @media print {
             /* Sembunyikan semua elemen selain ID Card */
@@ -816,64 +816,79 @@
                 animation: none !important;
             }
 
+            /* Name tag - sama persis dengan tampilan */
             .name-tag {
-                width: 350px !important;
-                max-width: 90% !important;
-                box-shadow: none !important;
-                border: 2px solid #C9A84C !important;
-                border-radius: 12px !important;
+                width: 380px !important;
                 background: #0a0e1a !important;
+                border-radius: 14px !important;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7) !important;
+                border: 1px solid rgba(201, 168, 76, 0.3) !important;
                 page-break-inside: avoid;
                 margin: 0 auto;
             }
 
             .name-tag::before {
                 background: linear-gradient(90deg, #C9A84C, #F4E08A, #C9A84C) !important;
-                animation: none !important;
             }
 
-            /* Sembunyikan tombol aksi saat print */
-            .id-card-actions,
-            .id-card-actions * {
-                display: none !important;
-                visibility: hidden !important;
-            }
-
-            /* Warna background sama seperti tampilan */
             .name-tag-header {
                 background: linear-gradient(180deg, #0d1230, #151d4a) !important;
+                border-bottom: 1px solid rgba(201, 168, 76, 0.1) !important;
             }
 
-            .name-tag-badge {
-                background: #0a0e1a !important;
-            }
-
-            .name-tag-details {
-                background: #0d1230 !important;
-            }
-
-            .name-tag-footer {
-                background: #080c18 !important;
-            }
-
-            /* Pastikan semua warna tetap */
             .name-tag-header .header-left .org-name {
                 color: #C9A84C !important;
             }
             .name-tag-header .header-left .org-sub {
                 color: #6a7a9a !important;
             }
+
+            .name-tag-badge {
+                background: #0a0e1a !important;
+            }
+
+            .name-tag-badge .photo-container .ring-border {
+                background: linear-gradient(135deg, #C9A84C, #F4E08A) !important;
+            }
+            .name-tag-badge .photo-container .ring-border .ring-inner {
+                background: #0a0e1a !important;
+            }
+
+            .name-tag-badge .photo-placeholder {
+                background: linear-gradient(135deg, #1a2a5a, #0d1230) !important;
+                border: 2px solid rgba(201, 168, 76, 0.2) !important;
+                color: #C9A84C !important;
+            }
+
             .name-tag-badge .name {
                 color: #ffffff !important;
             }
             .name-tag-badge .nim {
                 color: #6a7a9a !important;
             }
+            .name-tag-badge .divider {
+                background: linear-gradient(90deg, transparent, #C9A84C, transparent) !important;
+            }
+
+            .name-tag-details {
+                background: #0d1230 !important;
+                border-top: 1px solid rgba(201, 168, 76, 0.08) !important;
+            }
+
             .name-tag-details .item .label {
                 color: #4a5a7a !important;
             }
             .name-tag-details .item .value {
                 color: #e0e8f5 !important;
+            }
+
+            .name-tag-footer {
+                background: #080c18 !important;
+                border-top: 1px solid rgba(201, 168, 76, 0.08) !important;
+            }
+
+            .name-tag-footer .footer-left .footer-icon {
+                color: #C9A84C !important;
             }
             .name-tag-footer .footer-left .footer-text {
                 color: #3a4a6a !important;
@@ -884,22 +899,16 @@
             .name-tag-footer .footer-right .date {
                 color: #C9A84C !important;
             }
-            .name-tag-badge .photo-placeholder {
-                background: linear-gradient(135deg, #1a2a5a, #0d1230) !important;
-                border: 2px solid rgba(201, 168, 76, 0.2) !important;
-                color: #C9A84C !important;
-            }
-            .name-tag-badge .divider {
-                background: linear-gradient(90deg, transparent, #C9A84C, transparent) !important;
-            }
+
             .name-tag-header .header-right .logo-ukm {
                 filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.15)) !important;
             }
-            .name-tag-badge .photo-container .ring-border {
-                background: linear-gradient(135deg, #C9A84C, #F4E08A) !important;
-            }
-            .name-tag-badge .photo-container .ring-border .ring-inner {
-                background: #0a0e1a !important;
+
+            /* Sembunyikan tombol aksi saat print */
+            .id-card-actions,
+            .id-card-actions * {
+                display: none !important;
+                visibility: hidden !important;
             }
         }
     </style>
@@ -1192,7 +1201,7 @@
                         </div>
                     </div>
 
-                    <!-- Badge - Foto Tidak Bertumpuk -->
+                    <!-- Badge -->
                     <div class="name-tag-badge">
                         <div class="photo-container">
                             <div class="ring-border">
