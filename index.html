@@ -327,20 +327,24 @@
             margin-top: 5px;
         }
 
+        .form-page {
+            display: block;
+        }
+
+        .form-page.hidden {
+            display: none;
+        }
+
         /* ===== ID CARD PREVIEW ===== */
         .id-card-preview {
             display: none;
-            background: linear-gradient(135deg, #0a0a1a, #1a1a3a);
-            border: 2px solid #00D4FF;
-            border-radius: 16px;
-            padding: 30px;
-            margin: 20px 0;
+            justify-content: center;
+            padding: 20px 0;
             animation: fadeInUp 0.8s ease;
-            box-shadow: 0 0 40px rgba(0, 212, 255, 0.15);
         }
 
         .id-card-preview.active {
-            display: block;
+            display: flex;
         }
 
         @keyframes fadeInUp {
@@ -354,79 +358,188 @@
             }
         }
 
-        .id-card-header {
+        /* ===== DESAIN NAME TAG ===== */
+        .name-tag {
+            width: 360px;
+            background: linear-gradient(145deg, #ffffff, #f0f4ff);
+            border-radius: 16px;
+            padding: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            position: relative;
+        }
+
+        /* Garis neon atas */
+        .name-tag::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #00D4FF, #00FF88, #00D4FF);
+            background-size: 200% 100%;
+            animation: neonMove 2s linear infinite;
+        }
+
+        /* Header Name Tag */
+        .name-tag-header {
+            background: linear-gradient(135deg, #0a0a2a, #1a1a4a);
+            padding: 18px 20px 12px;
             text-align: center;
-            border-bottom: 2px solid rgba(0, 212, 255, 0.3);
-            padding-bottom: 15px;
-            margin-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 212, 255, 0.2);
         }
 
-        .id-card-header .badge-icon {
-            font-size: 36px;
-        }
-
-        .id-card-header h2 {
+        .name-tag-header .org-name {
             color: #00D4FF;
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: 2px;
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
-        .id-card-header .sub {
+        .name-tag-header .org-sub {
             color: #8892b0;
-            font-size: 13px;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-top: 2px;
         }
 
-        .id-card-body {
+        .name-tag-header .badge-icon {
+            font-size: 28px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Badge ID */
+        .name-tag-badge {
+            padding: 16px 20px 10px;
+            text-align: center;
+            background: #ffffff;
+        }
+
+        .name-tag-badge .photo-placeholder {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00D4FF, #0088ff);
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
+            border: 3px solid #fff;
+        }
+
+        .name-tag-badge .name {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0a0a1a;
+            letter-spacing: 0.5px;
+        }
+
+        .name-tag-badge .nim {
+            font-size: 13px;
+            color: #4a4a7a;
+            font-weight: 500;
+            margin-top: 2px;
+        }
+
+        .name-tag-badge .divider {
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #00D4FF, #00FF88);
+            margin: 8px auto;
+            border-radius: 2px;
+        }
+
+        /* Detail Info */
+        .name-tag-details {
+            padding: 8px 20px 16px;
+            background: #f8faff;
+            border-top: 1px solid #e8edf5;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 8px 25px;
-            padding: 10px 0;
+            gap: 4px 20px;
         }
 
-        .id-card-body .field {
+        .name-tag-details .item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            padding: 4px 0;
+            border-bottom: 1px dashed #e8edf5;
         }
 
-        .id-card-body .field .label {
+        .name-tag-details .item .label {
+            font-size: 11px;
             color: #8892b0;
-            font-size: 13px;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .id-card-body .field .value {
-            color: #e6f1ff;
-            font-size: 13px;
+        .name-tag-details .item .value {
+            font-size: 12px;
+            color: #1a1a3a;
             font-weight: 600;
             text-align: right;
-            max-width: 60%;
-            word-break: break-word;
         }
 
-        .id-card-footer {
-            text-align: center;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
+        /* Footer Name Tag */
+        .name-tag-footer {
+            background: #0a0a2a;
+            padding: 8px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(0, 212, 255, 0.15);
         }
 
-        .id-card-footer .qr-placeholder {
+        .name-tag-footer .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .name-tag-footer .footer-left .logo-small {
+            height: 22px;
+            width: auto;
+        }
+
+        .name-tag-footer .footer-left .footer-text {
             color: #4a4a7a;
-            font-size: 12px;
+            font-size: 8px;
+            letter-spacing: 0.5px;
         }
 
+        .name-tag-footer .footer-right {
+            color: #4a4a7a;
+            font-size: 8px;
+            text-align: right;
+            letter-spacing: 0.5px;
+        }
+
+        .name-tag-footer .footer-right .date {
+            color: #00D4FF;
+        }
+
+        /* Tombol Aksi */
         .id-card-actions {
             display: flex;
             gap: 12px;
             justify-content: center;
-            margin-top: 15px;
+            margin-top: 20px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
-        .btn-print, .btn-download {
+        .btn-print,
+        .btn-back,
+        .btn-card {
             padding: 10px 25px;
             border: none;
             border-radius: 8px;
@@ -449,26 +562,19 @@
             box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
         }
 
-        .btn-download {
-            background: linear-gradient(135deg, #FF6B6B, #ee5a24);
+        .btn-card {
+            background: linear-gradient(135deg, #00D4FF, #0088ff);
             color: #fff;
         }
 
-        .btn-download:hover {
+        .btn-card:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
         }
 
         .btn-back {
-            padding: 10px 25px;
             background: linear-gradient(135deg, #6C5CE7, #4834d4);
-            border: none;
-            border-radius: 8px;
             color: #fff;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
         }
 
         .btn-back:hover {
@@ -476,18 +582,31 @@
             box-shadow: 0 0 20px rgba(108, 92, 231, 0.3);
         }
 
-        .form-page {
-            display: block;
+        .btn-print-pdf {
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #FF6B6B, #ee5a24);
+            border: none;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .form-page.hidden {
-            display: none;
+        .btn-print-pdf:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.3);
         }
 
+        /* ===== THANK YOU PAGE ===== */
         .thankyou-page {
             display: none;
             text-align: center;
-            padding: 40px 20px;
+            padding: 50px 30px;
             animation: fadeInUp 0.8s ease;
         }
 
@@ -519,6 +638,20 @@
             line-height: 1.8;
             max-width: 500px;
             margin: 0 auto 10px;
+        }
+
+        .thankyou-page .sub-text {
+            color: #8892b0;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+
+        .thankyou-page .btn-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+            flex-wrap: wrap;
         }
 
         .confetti-container {
@@ -567,23 +700,38 @@
             .radio-other-wrapper input[type="text"] {
                 min-width: 120px;
             }
-            .logo-left img, .logo-right img {
+            .logo-left img,
+            .logo-right img {
                 height: 45px;
             }
-            .id-card-body {
-                grid-template-columns: 1fr;
-                gap: 4px;
+            .name-tag {
+                width: 320px;
             }
-            .id-card-body .field .value {
-                max-width: 50%;
-                font-size: 12px;
+            .name-tag-details {
+                grid-template-columns: 1fr;
+                gap: 2px;
+            }
+            .name-tag-badge .photo-placeholder {
+                width: 65px;
+                height: 65px;
+                font-size: 30px;
+            }
+            .name-tag-badge .name {
+                font-size: 17px;
             }
             .id-card-actions {
                 flex-direction: column;
+                align-items: center;
             }
-            .btn-print, .btn-download, .btn-back {
+            .btn-print,
+            .btn-back,
+            .btn-card,
+            .btn-print-pdf {
                 width: 100%;
                 justify-content: center;
+            }
+            .thankyou-page .btn-actions {
+                flex-direction: column;
             }
         }
 
@@ -591,38 +739,27 @@
             body * {
                 visibility: hidden;
             }
-            .id-card-preview, .id-card-preview * {
+            .id-card-preview,
+            .id-card-preview * {
                 visibility: visible;
             }
             .id-card-preview {
                 position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                border: none;
-                box-shadow: none;
-                background: #ffffff !important;
-                color: #000000 !important;
-            }
-            .id-card-preview .field .label {
-                color: #555555 !important;
-            }
-            .id-card-preview .field .value {
-                color: #000000 !important;
-            }
-            .id-card-preview .id-card-header h2 {
-                color: #0066cc !important;
-            }
-            .id-card-preview .id-card-header .sub {
-                color: #666666 !important;
-            }
-            .id-card-preview .id-card-footer .qr-placeholder {
-                color: #999999 !important;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                display: flex !important;
+                padding: 0;
+                background: transparent;
             }
             .id-card-actions {
                 display: none !important;
             }
-            .btn-back {
+            .name-tag {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+            }
+            .name-tag::before {
                 display: none !important;
             }
         }
@@ -652,17 +789,16 @@
 
             <div class="description">
                 <p>
-                    <strong>UKM E-Lektris</strong> adalah Unit Kegiatan Mahasiswa di bidang 
-                    <span class="highlight">Teknik Elektro dan Elektronika</span> yang bertujuan untuk 
-                    mengembangkan potensi mahasiswa dalam bidang <strong>kelistrikan, robotika, 
-                    dan inovasi teknologi</strong>. Bergabunglah dengan kami untuk mengasah 
-                    keterampilan, memperluas jaringan, dan berkontribusi dalam proyek-proyek 
+                    <strong>UKM E-Lektris</strong> adalah Unit Kegiatan Mahasiswa di bidang
+                    <span class="highlight">Teknik Elektronika</span> yang bertujuan untuk
+                    mengembangkan potensi mahasiswa dalam bidang <strong>kelistrikan, robotika,
+                    dan inovasi teknologi</strong>. Bergabunglah dengan kami untuk mengasah
+                    keterampilan, memperluas jaringan, dan berkontribusi dalam proyek-proyek
                     nyata yang bermanfaat bagi masyarakat.
                 </p>
                 <p style="margin-top: 8px;">
-                    ✨ <strong>Keunggulan UKM E-Lektris:</strong> 
-                    Pelatihan rutin, workshop bersama praktisi, kompetisi tingkat nasional, 
-                    dan proyek pengabdian masyarakat.
+                    ✨ <strong>Keunggulan UKM E-Lektris:</strong>
+                    Pelatihan rutin, workshop bersama praktisi, dan proyek pengabdian masyarakat.
                 </p>
             </div>
 
@@ -675,39 +811,21 @@
                     <label for="nama">
                         Nama Lengkap <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="nama" 
-                        name="nama" 
-                        placeholder="Masukkan nama lengkap Anda"
-                        required
-                    />
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap Anda" required />
                 </div>
 
                 <div class="form-group">
                     <label for="nim">
                         Nomor Induk Mahasiswa (NIM) <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="nim" 
-                        name="nim" 
-                        placeholder="Contoh: 2023010001"
-                        required
-                    />
+                    <input type="text" id="nim" name="nim" placeholder="Contoh: 2023010001" required />
                 </div>
 
                 <div class="form-group">
                     <label for="prodi">
                         Program Studi <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="prodi" 
-                        name="prodi" 
-                        placeholder="Contoh: Teknik Elektronika"
-                        required
-                    />
+                    <input type="text" id="prodi" name="prodi" placeholder="Contoh: Teknik Elektronika" required />
                 </div>
 
                 <div class="form-group">
@@ -722,8 +840,6 @@
                         <option value="4">4</option>
                         <option value="5">5</option>
                         <option value="6">6</option>
-                        <option value="7">7</option>
-                        <option value="8">8</option>
                         <option value="Lainnya">Lainnya</option>
                     </select>
                     <div class="note-info">Pilih "Lainnya" jika semester tidak tersedia di atas</div>
@@ -733,13 +849,7 @@
                     <label for="ttl">
                         Tempat, Tanggal Lahir <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="ttl" 
-                        name="ttl" 
-                        placeholder="Contoh: Jakarta, 01 Januari 2000"
-                        required
-                    />
+                    <input type="text" id="ttl" name="ttl" placeholder="Contoh: Jakarta, 01 Januari 2000" required />
                 </div>
 
                 <div class="form-group">
@@ -762,26 +872,14 @@
                     <label for="alamat">
                         Alamat Lengkap (sekarang) <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="alamat" 
-                        name="alamat" 
-                        placeholder="Masukkan alamat lengkap Anda saat ini"
-                        required
-                    />
+                    <input type="text" id="alamat" name="alamat" placeholder="Masukkan alamat lengkap Anda saat ini" required />
                 </div>
 
                 <div class="form-group">
                     <label for="hp">
                         Nomor HP Aktif / WhatsApp <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="hp" 
-                        name="hp" 
-                        placeholder="Contoh: 0812-3456-7890"
-                        required
-                    />
+                    <input type="text" id="hp" name="hp" placeholder="Contoh: 0812-3456-7890" required />
                 </div>
 
                 <div class="section-title">🆘 Kontak Darurat</div>
@@ -790,13 +888,7 @@
                     <label for="ortu">
                         Nama Orang Tua/Wali <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="ortu" 
-                        name="ortu" 
-                        placeholder="Masukkan nama orang tua atau wali"
-                        required
-                    />
+                    <input type="text" id="ortu" name="ortu" placeholder="Masukkan nama orang tua atau wali" required />
                 </div>
 
                 <div class="form-group">
@@ -828,26 +920,14 @@
                     <label for="hp_ortu">
                         Nomor HP Aktif / WhatsApp (Orang Tua/Wali) <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="hp_ortu" 
-                        name="hp_ortu" 
-                        placeholder="Contoh: 0812-3456-7890"
-                        required
-                    />
+                    <input type="text" id="hp_ortu" name="hp_ortu" placeholder="Contoh: 0812-3456-7890" required />
                 </div>
 
                 <div class="form-group">
                     <label for="alamat_ortu">
                         Alamat Orang Tua/Wali <span class="required">*</span>
                     </label>
-                    <input 
-                        type="text" 
-                        id="alamat_ortu" 
-                        name="alamat_ortu" 
-                        placeholder="Masukkan alamat orang tua atau wali"
-                        required
-                    />
+                    <input type="text" id="alamat_ortu" name="alamat_ortu" placeholder="Masukkan alamat orang tua atau wali" required />
                 </div>
 
                 <div class="section-title">ℹ️ Informasi, Kondisi dan Kebutuhan</div>
@@ -881,11 +961,7 @@
                     <label for="organisasi_detail">
                         Organisasi/Kegiatan yang pernah diikuti
                     </label>
-                    <textarea 
-                        id="organisasi_detail" 
-                        name="organisasi_detail" 
-                        placeholder="Tuliskan organisasi atau kegiatan yang pernah Anda ikuti (jika ada)"
-                    ></textarea>
+                    <textarea id="organisasi_detail" name="organisasi_detail" placeholder="Tuliskan organisasi atau kegiatan yang pernah Anda ikuti (jika ada)"></textarea>
                 </div>
 
                 <div class="form-group">
@@ -936,28 +1012,8 @@
             </form>
 
             <div class="footer-note">
-                Data Anda akan tersimpan aman di Google Drive &bull; 
+                Data Anda akan tersimpan aman di Google Sheets &bull;
                 <a href="#" target="_blank">Kebijakan Privasi</a>
-            </div>
-        </div>
-
-        <!-- ===== ID CARD PREVIEW ===== -->
-        <div class="id-card-preview" id="idCardPreview">
-            <div class="id-card-header">
-                <div class="badge-icon">⚡</div>
-                <h2>UKM E-LEKTRIS</h2>
-                <div class="sub">Politeknik Dewantara • Kartu Registrasi</div>
-            </div>
-            <div class="id-card-body" id="idCardBody">
-                <!-- Data akan diisi oleh JavaScript -->
-            </div>
-            <div class="id-card-footer">
-                <div class="qr-placeholder">📅 Terdaftar: <span id="registerDate"></span></div>
-            </div>
-            <div class="id-card-actions">
-                <button class="btn-print" onclick="printCard()">🖨️ Cetak Kartu</button>
-                <button class="btn-download" onclick="downloadCard()">📥 Download PDF</button>
-                <button class="btn-back" onclick="backToForm()">⬅️ Kembali</button>
             </div>
         </div>
 
@@ -967,11 +1023,78 @@
             <h2>Pendaftaran Berhasil!</h2>
             <p>
                 Terima kasih telah mendaftar di <strong style="color: #00D4FF;">UKM E-Lektris</strong>.
-                Kartu registrasi Anda telah dibuat dan tersimpan di Google Drive.
+                Data Anda telah berhasil disimpan.
             </p>
-            <button class="btn-back" onclick="showCard()" style="margin-top: 20px; padding: 12px 30px; background: linear-gradient(135deg, #00D4FF, #0088ff); border: none; border-radius: 10px; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer;">
-                👤 Lihat Kartu Registrasi
-            </button>
+            <p class="sub-text">
+                📌 Klik tombol di bawah untuk melihat dan mengunduh Kartu Registrasi Anda.
+            </p>
+            <div class="btn-actions">
+                <button class="btn-card" onclick="showCard()">
+                    👤 Lihat Kartu Registrasi
+                </button>
+            </div>
+        </div>
+
+        <!-- ===== ID CARD PREVIEW ===== -->
+        <div class="id-card-preview" id="idCardPreview">
+            <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+
+                <!-- ===== NAME TAG ===== -->
+                <div class="name-tag" id="nameTag">
+                    <!-- Header -->
+                    <div class="name-tag-header">
+                        <span class="badge-icon">⚡</span>
+                        <div class="org-name">UKM E-Lektris</div>
+                        <div class="org-sub">Politeknik Dewantara</div>
+                    </div>
+
+                    <!-- Badge -->
+                    <div class="name-tag-badge">
+                        <div class="photo-placeholder" id="photoIcon">👤</div>
+                        <div class="name" id="cardNama">-</div>
+                        <div class="nim" id="cardNim">-</div>
+                        <div class="divider"></div>
+                    </div>
+
+                    <!-- Details -->
+                    <div class="name-tag-details" id="cardDetails">
+                        <div class="item">
+                            <span class="label">Program Studi</span>
+                            <span class="value" id="cardProdi">-</span>
+                        </div>
+                        <div class="item">
+                            <span class="label">Jenis Kelamin</span>
+                            <span class="value" id="cardJK">-</span>
+                        </div>
+                        <div class="item">
+                            <span class="label">No. HP</span>
+                            <span class="value" id="cardHP">-</span>
+                        </div>
+                        <div class="item">
+                            <span class="label">Semester</span>
+                            <span class="value" id="cardSemester">-</span>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="name-tag-footer">
+                        <div class="footer-left">
+                            <span style="font-size:16px;">⚡</span>
+                            <span class="footer-text">E-LEKTRIS</span>
+                        </div>
+                        <div class="footer-right">
+                            Terdaftar: <span class="date" id="cardDate">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tombol Aksi -->
+                <div class="id-card-actions">
+                    <button class="btn-print" onclick="printCard()">🖨️ Cetak Kartu</button>
+                    <button class="btn-print-pdf" onclick="downloadPDF()">📥 Download PDF</button>
+                    <button class="btn-back" onclick="backToForm()">⬅️ Kembali</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -991,12 +1114,12 @@
                 var targetId = this.getAttribute('data-target');
                 var wrapper = document.getElementById(targetId);
                 var input = wrapper.querySelector('input[type="text"]');
-                
+
                 if (this.checked) {
                     wrapper.style.display = 'flex';
                     input.disabled = false;
                     input.focus();
-                    
+
                     var radioGroup = this.closest('.radio-group');
                     if (radioGroup) {
                         radioGroup.querySelectorAll('input[type="radio"]').forEach(function(r) {
@@ -1039,27 +1162,27 @@
         // ===== FUNGSI SUBMIT FORM =====
         function handleSubmit(event) {
             event.preventDefault();
-            
+
             if (isSubmitting) return;
-            
+
             const form = document.getElementById('registrationForm');
             const submitBtn = document.getElementById('submitBtn');
-            
+
             if (!form.checkValidity()) {
                 form.reportValidity();
                 return;
             }
-            
+
             isSubmitting = true;
             submitBtn.disabled = true;
             submitBtn.textContent = '⏳ Mengirim...';
-            
+
             // Kumpulkan data dari form
             const formData = new FormData(form);
             const data = {};
-            
+
             for (let [key, value] of formData.entries()) {
-                if (key === 'jenis_kelamin' || key === 'hubungan' || key === 'organisasi_pernah' || 
+                if (key === 'jenis_kelamin' || key === 'hubungan' || key === 'organisasi_pernah' ||
                     key === 'penyakit' || key === 'kebutuhan') {
                     const radioSelected = form.querySelector(`input[name="${key}"]:checked`);
                     if (radioSelected) {
@@ -1069,30 +1192,30 @@
                     data[key] = value;
                 }
             }
-            
+
             // Handle field "Lainnya"
             const hubunganLainnya = form.querySelector('input[name="hubungan_lainnya"]');
             if (hubunganLainnya && hubunganLainnya.value) {
                 data.hubungan = hubunganLainnya.value;
             }
-            
+
             const organisasiLainnya = form.querySelector('input[name="organisasi_pernah_lainnya"]');
             if (organisasiLainnya && organisasiLainnya.value) {
                 data.organisasi_pernah = organisasiLainnya.value;
             }
-            
+
             const penyakitLainnya = form.querySelector('input[name="penyakit_lainnya"]');
             if (penyakitLainnya && penyakitLainnya.value) {
                 data.penyakit = penyakitLainnya.value;
             }
-            
+
             const kebutuhanLainnya = form.querySelector('input[name="kebutuhan_lainnya"]');
             if (kebutuhanLainnya && kebutuhanLainnya.value) {
                 data.kebutuhan = kebutuhanLainnya.value;
             }
-            
+
             submittedData = data;
-            
+
             // Kirim data ke Google Apps Script
             fetch(WEB_APP_URL, {
                 method: 'POST',
@@ -1102,68 +1225,64 @@
                 },
                 body: JSON.stringify(data)
             }).then(() => {
-                // Tampilkan ID Card
-                showCard();
-                
+                showThankYou();
                 isSubmitting = false;
                 submitBtn.disabled = false;
                 submitBtn.textContent = '⚡ Daftar Sekarang';
             }).catch(() => {
-                // Tampilkan ID Card
-                showCard();
-                
+                showThankYou();
                 isSubmitting = false;
                 submitBtn.disabled = false;
                 submitBtn.textContent = '⚡ Daftar Sekarang';
             });
         }
 
+        // ===== FUNGSI TAMPILKAN THANK YOU =====
+        function showThankYou() {
+            document.getElementById('formPage').classList.add('hidden');
+            document.getElementById('thankyouPage').classList.add('active');
+            document.getElementById('idCardPreview').classList.remove('active');
+            launchConfetti();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
         // ===== FUNGSI TAMPILKAN ID CARD =====
         function showCard() {
-            const formPage = document.getElementById('formPage');
             const thankyouPage = document.getElementById('thankyouPage');
             const idCardPreview = document.getElementById('idCardPreview');
-            const idCardBody = document.getElementById('idCardBody');
-            
+
             if (!submittedData) return;
-            
-            // Sembunyikan form dan thank you
-            formPage.classList.add('hidden');
+
+            // Sembunyikan thank you, tampilkan ID Card
             thankyouPage.classList.remove('active');
-            
-            // Tampilkan ID Card
             idCardPreview.classList.add('active');
-            
-            // Isi data ke ID Card
-            const fields = [
-                { label: 'Nama Lengkap', key: 'nama' },
-                { label: 'NIM', key: 'nim' },
-                { label: 'Program Studi', key: 'prodi' },
-                { label: 'Semester', key: 'semester' },
-                { label: 'Tempat, Tanggal Lahir', key: 'ttl' },
-                { label: 'Jenis Kelamin', key: 'jenis_kelamin' },
-                { label: 'Alamat', key: 'alamat' },
-                { label: 'No. HP', key: 'hp' },
-            ];
-            
-            let html = '';
-            fields.forEach(field => {
-                const value = submittedData[field.key] || '-';
-                html += `
-                    <div class="field">
-                        <span class="label">${field.label}</span>
-                        <span class="value">${value}</span>
-                    </div>
-                `;
+
+            // Isi data ke Name Tag
+            document.getElementById('cardNama').textContent = submittedData.nama || '-';
+            document.getElementById('cardNim').textContent = 'NIM: ' + (submittedData.nim || '-');
+            document.getElementById('cardProdi').textContent = submittedData.prodi || '-';
+            document.getElementById('cardJK').textContent = submittedData.jenis_kelamin || '-';
+            document.getElementById('cardHP').textContent = submittedData.hp || '-';
+            document.getElementById('cardSemester').textContent = 'Semester ' + (submittedData.semester || '-');
+
+            // Set tanggal
+            const now = new Date();
+            document.getElementById('cardDate').textContent = now.toLocaleDateString('id-ID', {
+                day: '2-digit',
+                month: 'long',
+                year: 'numeric'
             });
-            
-            idCardBody.innerHTML = html;
-            
-            // Set tanggal registrasi
-            document.getElementById('registerDate').textContent = new Date().toLocaleString('id-ID');
-            
-            // Jalankan confetti
-            launchConfetti();
+
+            // Set icon berdasarkan jenis kelamin
+            const photoIcon = document.getElementById('photoIcon');
+            if (submittedData.jenis_kelamin === 'Laki-Laki') {
+                photoIcon.textContent = '👨';
+            } else if (submittedData.jenis_kelamin === 'Perempuan') {
+                photoIcon.textContent = '👩';
+            } else {
+                photoIcon.textContent = '👤';
+            }
+
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -1173,10 +1292,9 @@
         }
 
         // ===== FUNGSI DOWNLOAD PDF =====
-        function downloadCard() {
-            // Buka link PDF dari Google Drive (jika tersedia)
-            // Atau gunakan window.print() dengan save as PDF
-            alert('📥 Untuk download PDF:\n1. Klik "Cetak Kartu"\n2. Pilih "Save as PDF" di printer options');
+        function downloadPDF() {
+            alert('📥 Untuk download PDF:\n1. Klik "Cetak Kartu"\n2. Pada dialog print, pilih "Save as PDF"\n3. Atur layout ke "Portrait"\n4. Klik Save');
+            window.print();
         }
 
         // ===== FUNGSI KEMBALI KE FORM =====
@@ -1185,7 +1303,7 @@
             document.getElementById('idCardPreview').classList.remove('active');
             document.getElementById('thankyouPage').classList.remove('active');
             document.getElementById('registrationForm').reset();
-            
+
             document.querySelectorAll('.radio-other-wrapper').forEach(function(wrapper) {
                 wrapper.style.display = 'none';
                 var input = wrapper.querySelector('input[type="text"]');
@@ -1194,7 +1312,7 @@
                     input.value = '';
                 }
             });
-            
+
             submittedData = null;
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
@@ -1203,7 +1321,7 @@
         function launchConfetti() {
             const container = document.getElementById('confettiContainer');
             const colors = ['#00D4FF', '#00FF88', '#FF6B6B', '#FFD93D', '#6C5CE7', '#FD79A8', '#00B894'];
-            
+
             for (let i = 0; i < 100; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
@@ -1216,19 +1334,11 @@
                 confetti.style.animationDelay = (Math.random() * 1.5) + 's';
                 container.appendChild(confetti);
             }
-            
+
             setTimeout(() => {
                 container.innerHTML = '';
             }, 5000);
         }
-
-        // ===== CEK STATUS URL =====
-        window.onload = function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('status') === 'success') {
-                showCard();
-            }
-        };
     </script>
 </body>
 </html>
